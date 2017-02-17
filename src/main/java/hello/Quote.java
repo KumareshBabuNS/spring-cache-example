@@ -1,14 +1,14 @@
 package hello;
 
-/**
- * Created by cdavis on 2/13/17.
- */
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.gemfire.mapping.Region;
 import org.springframework.util.ObjectUtils;
 
+/**
+ * Created by cdavis on 2/13/17.
+ */
 @Region("Quotes")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @SuppressWarnings("unused")
@@ -23,7 +23,7 @@ public class Quote {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -31,7 +31,7 @@ public class Quote {
         return quote;
     }
 
-    public void setQuote(final String quote) {
+    public void setQuote(String quote) {
         this.quote = quote;
     }
 
@@ -57,12 +57,9 @@ public class Quote {
         return hashValue;
     }
 
-    /*@Override
-    public String toString() {
-        return getQuote();
-    }*/
     @Override
     public String toString() {
-        return id + " quote is " + quote;
+        //return getQuote();
+        return String.format("%d - Quote is \"%s\"", getId(), getQuote());
     }
 }
